@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
 const Navbar = () => {
   return (
@@ -25,37 +26,53 @@ const Navbar = () => {
             </label>
           </div>
           <div className="flex-1">
-            <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+            <a className="btn btn-ghost normal-case text-xl">bosesKO</a>
           </div>
+          {/* Logout Icon */}
           <div className="flex-none">
-            <button className="btn btn-square btn-ghost">
+            <button className="btn btn-circle btn-ghost">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                className="inline-block w-5 h-5 stroke-current"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
               >
                 <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                ></path>
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
+                />
               </svg>
             </button>
           </div>
         </div>
-        <Outlet />
+        <div className="w-full min-h-screen flex flex-col items-center justify-center">
+          <Outlet />
+        </div>
       </div>
+      {/* Side drawer */}
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 h-full bg-white text-base-content">
+        <ul className="menu menu-md p-4 w-80 lg:w-96 h-full bg-white text-base-content">
+          <div className="w-full h-32 bg-base-200 rounded-full"></div>
           {/* Sidebar content here */}
-          <li>
-            <a>Sidebar Item 1</a>
+          <li className="mt-5">
+            <details open>
+              <summary>Analysis</summary>
+              <ul>
+                <li>
+                  <a href="/">Answers</a>
+                </li>
+                <li>
+                  <a href="/">Analyse CSV</a>
+                </li>
+              </ul>
+            </details>
           </li>
           <li>
-            <a>Sidebar Item 2</a>
+            <a href="/">FAQs</a>
           </li>
         </ul>
       </div>
