@@ -1,9 +1,8 @@
 import React from "react";
-
-function App() {
+const App =() => {
   return (
     <div className="text-6xl">
-      <button className="btn bg-red-500">Hello world</button>
+      <button className="btn bg-red-500">This is the main app</button>
     </div>
   );
 }
