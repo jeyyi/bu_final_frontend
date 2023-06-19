@@ -7,26 +7,27 @@ const Navbar = () => {
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content bg-slate-50 flex flex-col items-center justify-center">
         {/* Start of navbar */}
-        <div className="navbar bg-base-100 lg:hidden w-full">
+        <div className="navbar lg:hidden w-full">
           <div className="flex-none">
             <label htmlFor="my-drawer-2" className="btn btn-square btn-ghost">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                fill="none"
                 viewBox="0 0 24 24"
-                className="inline-block w-5 h-5 stroke-current"
+                fill="currentColor"
+                className="w-6 h-6"
               >
                 <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
+                  fillRule="evenodd"
+                  d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75H12a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                  clipRule="evenodd"
+                />
               </svg>
             </label>
           </div>
           <div className="flex-1">
-            <a className="btn btn-ghost normal-case text-xl">bosesKO</a>
+            <a className="btn btn-ghost normal-case text-xl" href="/">
+              bosesKO
+            </a>
           </div>
           {/* Logout Icon */}
           <div className="flex-none">
@@ -50,7 +51,7 @@ const Navbar = () => {
         </div>
         <div className="w-full min-h-screen flex flex-col">
           {/* Start navbar for content */}
-          <div className="navbar px-24 pt-8">
+          <div className="navbar px-32 pt-8 hidden lg:block">
             <div className="navbar-start">
               <button className="btn btn-primary rounded-full hover:bg-white hover:text-black border-none hover:text-lg">
                 See all answers
@@ -59,12 +60,12 @@ const Navbar = () => {
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    class="w-6 h-6"
+                    className="w-6 h-6"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M16.72 7.72a.75.75 0 011.06 0l3.75 3.75a.75.75 0 010 1.06l-3.75 3.75a.75.75 0 11-1.06-1.06l2.47-2.47H3a.75.75 0 010-1.5h16.19l-2.47-2.47a.75.75 0 010-1.06z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     />
                   </svg>
                 </span>
@@ -72,6 +73,11 @@ const Navbar = () => {
             </div>
             {/* End of navbar top */}
             <div className="navbar-end gap-5">
+              <input
+                type="text"
+                placeholder="Search"
+                className="input input-bordered w-full max-w-xs rounded-full"
+              />
               <div className="indicator">
                 <span className="indicator-item badge badge-warning badge-sm"></span>
                 <button className="btn btn-square rounded-lg bg-white text-gray-400 hover:btn-primary border-none hover:text-white">
@@ -89,7 +95,6 @@ const Navbar = () => {
                   </svg>
                 </button>
               </div>
-
               <button className="btn btn-square rounded-lg bg-white text-gray-400 hover:btn-primary border-none hover:text-white">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +111,7 @@ const Navbar = () => {
               </button>
             </div>
           </div>
-          <div className="w-full h-full flex flex-col px-32 mt-10">
+          <div className="w-full h-full flex flex-col px-5 lg:px-32 mt-10">
             <Outlet />
           </div>
         </div>
@@ -158,7 +163,7 @@ const Navbar = () => {
                 </span>
                 Analysis
               </summary>
-              <ul>
+              <ul className="mt-3">
                 <li>
                   <a
                     href="/"
