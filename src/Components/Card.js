@@ -35,7 +35,8 @@ const Card = () => {
       <h2 className="mt-2 text-3xl font-semibold">
         3.279<span className="text-sm text-gray-400 font-light">/order</span>
       </h2>
-      <progress className="progress w-full mt-7 progress-error" value="80" max="100"></progress>
+      <progress className="progress w-full mt-7 progress-error" value="75" max="100"></progress>
+      <h3 className="text-xs text-gray-400">75/100</h3>
     </div>
   );
 };
