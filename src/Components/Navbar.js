@@ -1,6 +1,7 @@
 import React from "react";
 import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
+import Logo from '../Assets/logo2.png'
 const Navbar = () => {
   return (
     <div className="drawer lg:drawer-open">
@@ -120,7 +121,9 @@ const Navbar = () => {
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu menu-lg p-8 w-80 lg:w-96 h-full bg-white text-base-content gap-3">
-          <div className="w-full h-32 bg-base-200 rounded-xl"></div>
+          <div className="w-full h-32 flex justify-center items-center">
+            <img src={Logo} className="object-cover w-56" alt="Logo"/>
+          </div>
           {/* Sidebar content here */}
           <li className="mt-2">
             <a
