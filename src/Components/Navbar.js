@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
-import Logo from '../Assets/logo2.png'
+import Logo from "../Assets/logo2.png";
 const Navbar = () => {
   return (
     <div className="drawer lg:drawer-open">
@@ -54,23 +54,35 @@ const Navbar = () => {
           {/* Start navbar for content */}
           <div className="navbar px-32 pt-8 hidden lg:block">
             <div className="navbar-start">
-              <button className="btn btn-primary rounded-full hover:bg-white hover:text-black border-none hover:text-lg">
-                See all answers
-                <span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="w-6 h-6"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.72 7.72a.75.75 0 011.06 0l3.75 3.75a.75.75 0 010 1.06l-3.75 3.75a.75.75 0 11-1.06-1.06l2.47-2.47H3a.75.75 0 010-1.5h16.19l-2.47-2.47a.75.75 0 010-1.06z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </span>
-              </button>
+              <details className="dropdown">
+                <summary className="btn btn-primary rounded-full border-none">
+                  Survey #1
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                      />
+                    </svg>
+                  </span>
+                </summary>
+                <ul className="p-2 shadow menu dropdown-content rounded-box w-52 bg-base-100">
+                  <li>
+                    <a href="/">Survey 2</a>
+                  </li>
+                  <li>
+                    <a href="/">Survey 3</a>
+                  </li>
+                </ul>
+              </details>
             </div>
             {/* End of navbar top */}
             <div className="navbar-end gap-5">
@@ -122,7 +134,7 @@ const Navbar = () => {
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu menu-lg p-8 w-80 lg:w-96 h-full bg-white text-base-content gap-3">
           <div className="w-full h-32 flex justify-center items-center">
-            <img src={Logo} className="object-cover w-56" alt="Logo"/>
+            <img src={Logo} className="object-cover w-56" alt="Logo" />
           </div>
           {/* Sidebar content here */}
           <li className="mt-2">
@@ -136,10 +148,13 @@ const Navbar = () => {
                 fill="currentColor"
                 className="w-6 h-6"
               >
-                <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
-                <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
+                <path
+                  fillRule="evenodd"
+                  d="M3 6a3 3 0 013-3h2.25a3 3 0 013 3v2.25a3 3 0 01-3 3H6a3 3 0 01-3-3V6zm9.75 0a3 3 0 013-3H18a3 3 0 013 3v2.25a3 3 0 01-3 3h-2.25a3 3 0 01-3-3V6zM3 15.75a3 3 0 013-3h2.25a3 3 0 013 3V18a3 3 0 01-3 3H6a3 3 0 01-3-3v-2.25zm9.75 0a3 3 0 013-3H18a3 3 0 013 3V18a3 3 0 01-3 3h-2.25a3 3 0 01-3-3v-2.25z"
+                  clipRule="evenodd"
+                />
               </svg>
-              Home
+              Dashboard
             </a>
           </li>
           <li>

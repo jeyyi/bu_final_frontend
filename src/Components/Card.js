@@ -2,7 +2,7 @@ import React from "react";
 
 const Card = () => {
   return (
-    <div className="w-full h-80 bg-white rounded-3xl shadow-sm px-5 py-5">
+    <div className="w-full h-72 bg-white rounded-3xl shadow-sm px-5 py-5">
       <div className="flex w-full justify-between">
         <div className="w-12 h-12 bg-orange-500 rounded-2xl flex justify-center items-center">
           <svg
@@ -31,9 +31,9 @@ const Card = () => {
           />
         </svg>
       </div>
-      <h2 className="mt-20 text-xl font-medium">Order on progress</h2>
+      <h2 className="mt-20 text-xl font-medium">Survey on Progress</h2>
       <h2 className="mt-2 text-3xl font-semibold">
-        3.279<span className="text-sm text-gray-400 font-light">/order</span>
+        3.279<span className="text-sm text-gray-400 font-light">answers/day</span>
       </h2>
       <progress className="progress w-full mt-7 progress-error" value="75" max="100"></progress>
       <h3 className="text-xs text-gray-400">75/100</h3>
