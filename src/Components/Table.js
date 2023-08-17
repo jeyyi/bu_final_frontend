@@ -2,7 +2,7 @@ import React from "react";
 
 function Table() {
   return (
-    <div className="overflow-x-auto mt-10 h-96">
+    <div className="overflow-auto mt-10 h-96">
       <table className="table">
         {/* head */}
         <thead>

@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "./Components/Card";
 import Table from "./Components/Table";
+import LineChart from "./Components/LineChart";
 const App = () => {
   return (
     <>
@@ -129,8 +130,8 @@ const App = () => {
         </div>
       </div>
       {/* 2nd div */}
-      <div className="w-full h-full flex flex-col lg:flex-row gap-10 my-10">
-        <div className="w-2/3 h-full">
+      <div className="w-full h-full flex-col lg:flex-row gap-10 my-10 flex">
+        <div className="w-full lg:w-2/3 h-full hidden lg:block">
           {/* Big table card */}
           <div className="w-full h-full bg-white rounded-3xl shadow-sm p-10">
             <div className="flex justify-between">
@@ -154,12 +155,36 @@ const App = () => {
               </button>
             </div>
             {/* Start table */}
-            <Table/>
+            <Table />
           </div>
         </div>
-        <div className="w-1/3 h-full flex flex-col gap-5">
-          <div className="w-full h-1/2 bg-white rounded-xl shadow-sm"></div>
-          <div className="w-full h-1/2 bg-white rounded-xl shadow-sm"></div>
+        <div className="w-full lg:w-1/3 h-full flex flex-col gap-5">
+          <div className="w-full h-full lg:h-1/2 bg-gradient-to-br from-primary to-secondary rounded-3xl shadow-sm p-10">
+            <button className="btn bg-white border-none rounded-full">
+              Upload File
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M11.47 2.47a.75.75 0 011.06 0l4.5 4.5a.75.75 0 01-1.06 1.06l-3.22-3.22V16.5a.75.75 0 01-1.5 0V4.81L8.03 8.03a.75.75 0 01-1.06-1.06l4.5-4.5zM3 15.75a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </span>
+            </button>
+            <h3 className="text-4xl text-white font-bold mt-5">
+              Analyse CSV Files
+            </h3>
+          </div>
+          <div className="w-full h-full lg:h-1/2 bg-orange-500 rounded-xl shadow-sm p-8">
+            <h3 className="text-2xl text-white font-semibold">Website Traffic</h3>
+            {/* <LineChart/> */}
+          </div>
         </div>
       </div>
     </>
