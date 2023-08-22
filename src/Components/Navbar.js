@@ -52,8 +52,9 @@ const Navbar = () => {
         </div>
         <div className="w-full min-h-screen flex flex-col">
           {/* Start navbar for content */}
-          <div className="navbar px-32 pt-8 hidden lg:block">
+          <div className="navbar px-32 pt-8 hidden lg:block">          
             <div className="navbar-start">
+              {/* Start of dropdown */}
               <details className="dropdown">
                 <summary className="btn btn-primary rounded-full border-none">
                   Survey #1
@@ -74,6 +75,7 @@ const Navbar = () => {
                     </svg>
                   </span>
                 </summary>
+                {/* End of dropdown */}
                 <ul className="p-2 shadow menu dropdown-content rounded-box w-52 bg-base-100">
                   <li>
                     <a href="/">Survey 2</a>

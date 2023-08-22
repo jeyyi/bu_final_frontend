@@ -5,6 +5,7 @@ import App from './App';
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import Navbar from './Components/Navbar';
 import example from './example';
+import AnalyzeCSV from './AnalyzeCSV';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,6 +14,7 @@ root.render(
       <Routes>
         <Route path='/' element = {<Navbar/>}>
           <Route index element={<App/>}/>
+          <Route path = '/analyzecsv' element={<AnalyzeCSV/>}/>
         </Route>
         <Route path='/example' element = {<example/>}></Route>
       </Routes>
