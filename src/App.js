@@ -1,8 +1,14 @@
 import React from "react";
 import Card from "./Components/Card";
 import Table from "./Components/Table";
-import LineChart from "./Components/LineChart";
+import { LineChart, Line } from "recharts";
 const App = () => {
+  const data = [
+    { name: "Page A", uv: 400, pv: 2400, amt: 2400 },
+    { name: "Page B", uv: 500, pv: 2800, amt: 2100 },
+    { name: "Page D", uv: 450, pv: 2300, amt: 2900 },
+    { name: "Page E", uv: 750, pv: 2100, amt: 2500 },
+  ];
   return (
     <>
       <div className="w-full h-fit flex flex-col lg:flex-row gap-10">
@@ -182,8 +188,14 @@ const App = () => {
             </h3>
           </div>
           <div className="w-full h-full lg:h-1/2 bg-orange-500 rounded-xl shadow-sm p-8">
-            <h3 className="text-2xl text-white font-semibold">Website Traffic</h3>
-            {/* <LineChart/> */}
+            <h3 className="text-2xl text-white font-semibold">
+              Website Traffic
+            </h3>
+            <div className="flex w-full h-full justify-center items-center">
+              <LineChart width={300} height={300} data={data}>
+                <Line type="monotone" dataKey="uv" stroke="#FFFFFF" />
+              </LineChart>
+            </div>
           </div>
         </div>
       </div>

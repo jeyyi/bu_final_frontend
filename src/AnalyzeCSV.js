@@ -87,8 +87,6 @@ function AnalyzeCSV() {
 
   useEffect(() => {
     if (!data) return;
-    console.log(currentPage);
-    console.log(totalPages);
     const startIndex = currentPage * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
 
@@ -97,16 +95,12 @@ function AnalyzeCSV() {
     setSubset(Object.fromEntries(subsetEntries));
   }, [data, currentPage, itemsPerPage]);
 
-  const handlePageChange = (selectedPage) => {
-    setCurrentPage(selectedPage.selected);
-  };
-
   return (
     <>
       <div className="w-full h-40 my-10 bg-base-100 shadow-sm flex">
         <div className="w-full h-full flex flex-col">
           <h3 className="px-10 pt-10 text-green-700 text-xl lg:text-4xl font-bold">
-            ANA<span className="text-green-600">LYSE</span>
+            ANA<span className="text-green-600">LYZE</span>
           </h3>
           <h3 className="px-10 text-green-700 text-2xl lg:text-6xl font-bold">
             EXCEL<span className="text-green-600"> FILE</span>
@@ -173,27 +167,8 @@ function AnalyzeCSV() {
             })}
           </>
         ) : (
-          <h3 className="text-center my-10 font-semibold text-2xl lg:text-4xl text-gray-600">Analyze CSV by clicking on "excel" icon</h3>
+          <h3 className="text-center my-10 font-semibold text-2xl lg:text-4xl text-gray-600">Analyze excel file by clicking on "excel" icon</h3>
         )}
-
-        {/*   <div className="flex justify-between mt-4">
-          <button
-            className="btn btn-primary"
-            onClick={() => setCurrentPage(currentPage-1)}
-            disabled={currentPage === 0}
-          >
-            Previous
-          </button>
-          <button
-            className="btn btn-primary"
-            onClick={() =>
-              setCurrentPage(currentPage+1)
-            }
-            disabled={currentPage === totalPages-1}
-          >
-            Next
-          </button>
-        </div> */}
         <div className="w-full flex items-center justify-center py-5">
           <div className="join">
             {Array.from({ length: totalPages }).map((_, index) => (
