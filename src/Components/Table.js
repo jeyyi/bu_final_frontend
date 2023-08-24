@@ -20,7 +20,7 @@ function Table() {
             <td>100414</td>
             <td>1-03-2023</td>
             <td>
-              <div className="badge bg-blue-500 px-8 py-4">Male</div>
+              <div className="badge bg-blue-700 px-8 py-4 text-white">Male</div>
             </td>
           </tr>
           {/* row 2 */}
@@ -29,7 +29,7 @@ function Table() {
             <td>100415</td>
             <td>1-04-2023</td>
             <td>
-              <div className="badge bg-blue-500 px-8 py-4">Male</div>
+              <div className="badge bg-blue-700 px-8 py-4 text-white">Male</div>
             </td>
           </tr>
           {/* row 3 */}
@@ -38,7 +38,7 @@ function Table() {
             <td>100418</td>
             <td>1-04-2023</td>
             <td>
-              <div className="badge bg-pink-500 px-8 py-4">Female</div>
+              <div className="badge bg-pink-500 px-8 py-4 text-white">Female</div>
             </td>
           </tr>
           {/* row 4 */}
@@ -47,7 +47,7 @@ function Table() {
             <td>100420</td>
             <td>1-03-2023</td>
             <td>
-              <div className="badge bg-blue-500 px-8 py-4">Male</div>
+              <div className="badge bg-blue-700 px-8 py-4 text-white">Male</div>
             </td>
           </tr>
           {/* row 5 */}
@@ -56,7 +56,7 @@ function Table() {
             <td>100487</td>
             <td>1-04-2023</td>
             <td>
-            <div className="badge bg-pink-500 px-8 py-4">Female</div>
+            <div className="badge bg-pink-500 px-8 py-4 text-white">Female</div>
             </td>
           </tr>
           {/* row 6 */}
@@ -65,7 +65,7 @@ function Table() {
             <td>100430</td>
             <td>1-04-2023</td>
             <td>
-            <div className="badge bg-pink-500 px-8 py-4">Female</div>
+            <div className="badge bg-pink-500 px-8 py-4 text-white">Female</div>
             </td>
           </tr>
           <tr className="hover cursor-pointer">
@@ -73,7 +73,7 @@ function Table() {
             <td>100414</td>
             <td>1-03-2023</td>
             <td>
-              <div className="badge bg-blue-500 px-8 py-4">Male</div>
+              <div className="badge bg-blue-700 px-8 py-4 text-white">Male</div>
             </td>
           </tr>
           {/* row 2 */}
@@ -82,7 +82,7 @@ function Table() {
             <td>100415</td>
             <td>1-04-2023</td>
             <td>
-              <div className="badge bg-blue-500 px-8 py-4">Male</div>
+              <div className="badge bg-blue-700 px-8 py-4 text-white">Male</div>
             </td>
           </tr>
           {/* row 3 */}
@@ -91,7 +91,7 @@ function Table() {
             <td>100418</td>
             <td>1-04-2023</td>
             <td>
-              <div className="badge bg-pink-500 px-8 py-4">Female</div>
+              <div className="badge bg-pink-500 px-8 py-4 text-white">Female</div>
             </td>
           </tr>
           {/* row 4 */}
@@ -100,7 +100,7 @@ function Table() {
             <td>100420</td>
             <td>1-03-2023</td>
             <td>
-              <div className="badge bg-blue-500 px-8 py-4">Male</div>
+              <div className="badge bg-blue-700 px-8 py-4 text-white">Male</div>
             </td>
           </tr>
           {/* row 5 */}
@@ -109,7 +109,7 @@ function Table() {
             <td>100487</td>
             <td>1-04-2023</td>
             <td>
-            <div className="badge bg-pink-500 px-8 py-4">Female</div>
+            <div className="badge bg-pink-500 px-8 py-4 text-white">Female</div>
             </td>
           </tr>
           {/* row 6 */}
@@ -118,7 +118,7 @@ function Table() {
             <td>100430</td>
             <td>1-04-2023</td>
             <td>
-            <div className="badge bg-pink-500 px-8 py-4">Female</div>
+            <div className="badge bg-pink-500 px-8 py-4 text-white">Female</div>
             </td>
           </tr>
         </tbody>

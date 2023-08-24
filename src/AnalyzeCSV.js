@@ -61,7 +61,6 @@ function AnalyzeCSV() {
           },
         }
       );
-      console.log(response.data);
       setData(response.data); // Process response from server
       setTotalPages(
         Math.ceil(Object.keys(response.data).length / itemsPerPage)
@@ -133,9 +132,11 @@ function AnalyzeCSV() {
               Analysis
             </h3>
             {Object.keys(subset).map((question, index) => {
+              console.log(question);
               const dataForQuestion = transformedData.filter(
                 (item) => item.question === question
               );
+              console.log(dataForQuestion.length)
               return (
                 <div
                   key={index}
@@ -145,23 +146,29 @@ function AnalyzeCSV() {
                   <div className="collapse-title text-sm flex items-center">
                     {question}
                   </div>
-                  <div className="collapse-content bg-white">
-                    <div className="p-0 lg:p-10">
-                      <ResponsiveContainer width="100%" height={300}>
-                        <BarChart data={dataForQuestion} layout="vertical">
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis type="number" tick={<CustomXAxisTick />} />
-                          <YAxis
-                            type="category"
-                            dataKey="name"
-                            tick={<CustomYAxisTick />}
-                          />
-                          <Tooltip />
-                          <Bar dataKey="value" fill="#1498FF" />
-                        </BarChart>
-                      </ResponsiveContainer>
+                  {
+                    dataForQuestion.length < 35 ? (
+                      <div className="collapse-content bg-white">
+                      <div className="p-0 lg:p-10">
+                        <ResponsiveContainer width="100%" height={300}>
+                          <BarChart data={dataForQuestion} layout="vertical">
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis type="number" tick={<CustomXAxisTick />} />
+                            <YAxis
+                              type="category"
+                              dataKey="name"
+                              tick={<CustomYAxisTick />}
+                            />
+                            <Tooltip />
+                            <Bar dataKey="value" fill="#1498FF" />
+                          </BarChart>
+                        </ResponsiveContainer>
+                      </div>
                     </div>
+                    ):<div className="collapse-content bg-white">
+                    Enter here
                   </div>
+                  }
                 </div>
               );
             })}

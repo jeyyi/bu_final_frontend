@@ -5,9 +5,9 @@ import { LineChart, Line } from "recharts";
 const App = () => {
   const data = [
     { name: "Page A", uv: 400, pv: 2400, amt: 2400 },
-    { name: "Page B", uv: 500, pv: 2800, amt: 2100 },
-    { name: "Page D", uv: 450, pv: 2300, amt: 2900 },
-    { name: "Page E", uv: 750, pv: 2100, amt: 2500 },
+    { name: "Page B", uv: 550, pv: 2800, amt: 2100 },
+    { name: "Page D", uv: 350, pv: 2300, amt: 2900 },
+    { name: "Page E", uv: 1250, pv: 2100, amt: 2500 },
   ];
   return (
     <>
@@ -142,7 +142,7 @@ const App = () => {
           <div className="w-full h-full bg-white rounded-3xl shadow-sm p-10">
             <div className="flex justify-between">
               <h3 className="text-lg font-medium">Recent Answers</h3>
-              <button className="btn btn-primary rounded-full hover:bg-white hover:text-black border-none">
+              <button className="btn bg-blue-700 text-white rounded-full hover:bg-white hover:text-black border-none">
                 See More
                 <span>
                   <svg
@@ -165,7 +165,7 @@ const App = () => {
           </div>
         </div>
         <div className="w-full lg:w-1/3 h-full flex flex-col gap-5">
-          <div className="w-full h-full lg:h-1/2 bg-gradient-to-br from-primary to-secondary rounded-3xl shadow-sm p-10">
+          <div className="w-full h-full lg:h-1/2 bg-gradient-to-br from-blue-700 to-secondary rounded-3xl shadow-sm p-10">
             <button className="btn bg-white border-none rounded-full">
               Upload File
               <span>
@@ -187,12 +187,13 @@ const App = () => {
               Analyse CSV Files
             </h3>
           </div>
-          <div className="w-full h-full lg:h-1/2 bg-orange-500 rounded-xl shadow-sm p-8">
+          <div className="w-full h-full lg:h-1/2 bg-blue-700 rounded-xl shadow-sm p-8">
             <h3 className="text-2xl text-white font-semibold">
               Website Traffic
             </h3>
-            <div className="flex w-full h-full justify-center items-center">
-              <LineChart width={300} height={300} data={data}>
+            <p className="text-gray-100 font-extralight text-sm">As of August 22,2023</p>
+            <div className="flex w-full h-full items-start justify-center">
+              <LineChart width={300} height={200} data={data}>
                 <Line type="monotone" dataKey="uv" stroke="#FFFFFF" />
               </LineChart>
             </div>

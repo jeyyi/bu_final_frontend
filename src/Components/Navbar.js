@@ -1,8 +1,11 @@
 import React from "react";
 import Footer from "./Footer";
-import { Outlet } from "react-router-dom";
+import { Outlet, Link, useLocation } from "react-router-dom";
 import Logo from "../Assets/logo2.png";
 const Navbar = () => {
+  const location = useLocation();
+  // Check if the current path is '/analyzecsv'
+  const isAnalyzeCsv = location.pathname === "/analyzecsv";
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -52,11 +55,11 @@ const Navbar = () => {
         </div>
         <div className="w-full min-h-screen flex flex-col">
           {/* Start navbar for content */}
-          <div className="navbar px-32 pt-8 hidden lg:block">          
+          <div className="navbar px-32 pt-8 hidden lg:block">
             <div className="navbar-start">
               {/* Start of dropdown */}
               <details className="dropdown">
-                <summary className="btn btn-primary rounded-full border-none">
+                <summary className="btn bg-blue-700 text-white hover:bg-white hover:text-black rounded-full border-none">
                   Survey #1
                   <span>
                     <svg
@@ -95,7 +98,7 @@ const Navbar = () => {
               />
               <div className="indicator">
                 <span className="indicator-item badge badge-warning badge-sm"></span>
-                <button className="btn btn-square rounded-lg bg-white text-gray-400 hover:btn-primary border-none hover:text-white">
+                <button className="btn btn-square rounded-lg bg-white text-gray-400 hover:bg-blue-700 border-none hover:text-white">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -110,7 +113,7 @@ const Navbar = () => {
                   </svg>
                 </button>
               </div>
-              <button className="btn btn-square rounded-lg bg-white text-gray-400 hover:btn-primary border-none hover:text-white">
+              <button className="btn btn-square rounded-lg bg-white text-gray-400 hover:bg-blue-700 border-none hover:text-white">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -142,7 +145,7 @@ const Navbar = () => {
           <li className="mt-2">
             <a
               href="/"
-              className="rounded-full text-sm text-gray-400 hover:text-white hover:bg-primary transition-colors"
+              className="rounded-full text-sm text-gray-400 hover:text-white hover:bg-blue-700 transition-colors"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -161,7 +164,7 @@ const Navbar = () => {
           </li>
           <li>
             <details open>
-              <summary className="bg-primary rounded-full text-white text-sm">
+              <summary className="bg-blue-700 rounded-full text-white text-sm">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -187,7 +190,7 @@ const Navbar = () => {
                 <li>
                   <a
                     href="/"
-                    className="rounded-full text-sm text-gray-400 hover:text-white hover:bg-primary transition-colors"
+                    className="rounded-full text-sm text-gray-400 hover:text-white hover:bg-blue-700 transition-colors"
                   >
                     <span>
                       <svg
@@ -208,9 +211,9 @@ const Navbar = () => {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/"
-                    className="rounded-full text-sm text-gray-400 hover:text-white hover:bg-primary transition-colors"
+                  <Link
+                    to="/analyzecsv"
+                    className={`rounded-full text-sm ${isAnalyzeCsv ? 'text-blue-700' : 'text-gray-400'} hover:text-white hover:bg-blue-700 transition-colors flex`}
                   >
                     <span>
                       <svg
@@ -227,7 +230,7 @@ const Navbar = () => {
                       </svg>
                     </span>
                     Analyse CSV
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </details>
@@ -235,7 +238,7 @@ const Navbar = () => {
           <li>
             <a
               href="/"
-              className="rounded-full text-sm text-gray-400 hover:text-white hover:bg-primary transition-colors"
+              className="rounded-full text-sm text-gray-400 hover:text-white hover:bg-blue-700 transition-colors"
             >
               <span>
                 <svg
@@ -260,7 +263,7 @@ const Navbar = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="w-12 h-12 text-primary"
+                className="w-12 h-12 text-blue-700"
               >
                 <path
                   fillRule="evenodd"
