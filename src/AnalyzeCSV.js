@@ -123,7 +123,6 @@ function AnalyzeCSV() {
         </div>
       </div>
       <div className="divider" />
-
       <div className="flex flex-col gap-3">
         {/* Question Card dropdown details summary */}
         {transformedData ? (
@@ -132,11 +131,9 @@ function AnalyzeCSV() {
               Analysis
             </h3>
             {Object.keys(subset).map((question, index) => {
-              console.log(question);
               const dataForQuestion = transformedData.filter(
                 (item) => item.question === question
               );
-              console.log(dataForQuestion.length)
               return (
                 <div
                   key={index}
@@ -165,8 +162,14 @@ function AnalyzeCSV() {
                         </ResponsiveContainer>
                       </div>
                     </div>
-                    ):<div className="collapse-content bg-white">
-                    Enter here
+                    ):
+                    /* Add NLP here */
+                    <div className="collapse-content bg-white">
+                    <p>Enter here</p>{
+                      dataForQuestion.forEach(item =>{
+                        console.log(item.value);
+                      })
+                    }
                   </div>
                   }
                 </div>
