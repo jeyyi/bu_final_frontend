@@ -1,11 +1,25 @@
-import React from "react";
-import Footer from "./Footer";
+import React, { useState, useEffect } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import Logo from "../Assets/logo2.png";
+import axios from "axios";
 const Navbar = () => {
   const location = useLocation();
   // Check if the current path is '/analyzecsv'
   const isAnalyzeCsv = location.pathname === "/analyzecsv";
+  const isAnalyzeSurvey = location.pathname === "/analyzesurvey";
+  const [surveys, setSurveys] = useState();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/survey");
+        console.log(response.data);
+        setSurveys(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -60,7 +74,7 @@ const Navbar = () => {
               {/* Start of dropdown */}
               <details className="dropdown">
                 <summary className="btn bg-blue-700 text-white hover:bg-white hover:text-black rounded-full border-none">
-                  Survey #1
+                  Select Survey
                   <span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -79,13 +93,15 @@ const Navbar = () => {
                   </span>
                 </summary>
                 {/* End of dropdown */}
-                <ul className="p-2 shadow menu dropdown-content rounded-box w-52 bg-base-100">
-                  <li>
-                    <a href="/">Survey 2</a>
-                  </li>
-                  <li>
-                    <a href="/">Survey 3</a>
-                  </li>
+                <ul className="p-2 shadow menu dropdown-content rounded-box w-fit bg-base-100">
+                  {
+                    surveys &&
+                      surveys.map((survey)=>(
+                        <li key ={survey.id}>
+                          <a href='/'>{survey.title}</a>
+                        </li>
+                      ))
+                  }
                 </ul>
               </details>
             </div>
@@ -188,9 +204,11 @@ const Navbar = () => {
               </summary>
               <ul className="mt-3">
                 <li>
-                  <a
-                    href="/"
-                    className="rounded-full text-sm text-gray-400 hover:text-white hover:bg-blue-700 transition-colors"
+                  <Link
+                    to="/analyzesurvey"
+                    className={`rounded-full text-sm ${
+                      isAnalyzeSurvey ? "text-blue-700" : "text-gray-400"
+                    } hover:text-white hover:bg-blue-700 transition-colors flex`}
                   >
                     <span>
                       <svg
@@ -208,12 +226,14 @@ const Navbar = () => {
                       </svg>
                     </span>
                     Answers
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <Link
                     to="/analyzecsv"
-                    className={`rounded-full text-sm ${isAnalyzeCsv ? 'text-blue-700' : 'text-gray-400'} hover:text-white hover:bg-blue-700 transition-colors flex`}
+                    className={`rounded-full text-sm ${
+                      isAnalyzeCsv ? "text-blue-700" : "text-gray-400"
+                    } hover:text-white hover:bg-blue-700 transition-colors flex`}
                   >
                     <span>
                       <svg

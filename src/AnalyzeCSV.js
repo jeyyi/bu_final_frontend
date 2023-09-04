@@ -12,9 +12,8 @@ import {
 } from "recharts";
 import axios from "axios";
 function AnalyzeCSV() {
-  const [file, setFile] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(5);
+  const itemsPerPage= 5;
   const [totalPages, setTotalPages] = useState(0);
   const [transformedData, setTransformedData] = useState(null);
   // State to hold the subset of data
@@ -24,7 +23,7 @@ function AnalyzeCSV() {
   const CustomXAxisTick = ({ x, y, payload }) => {
     return (
       <g transform={`translate(${x},${y})`}>
-        <text x={0} y={0} dy={16} textAnchor="middle" fill="#666" fontSize="11">
+        <text x={0} y={0} dy={16} textAnchor="middle" fill="#666" fontSize="10">
           {payload.value}
         </text>
       </g>
@@ -34,7 +33,7 @@ function AnalyzeCSV() {
   const CustomYAxisTick = ({ x, y, payload }) => {
     return (
       <g transform={`translate(${x},${y})`}>
-        <text x={0} y={0} dy={-4} textAnchor="end" fill="#666" fontSize="11">
+        <text x={0} y={0} dy={0} textAnchor="end" fill="#666" fontSize="10">
           {payload.value}
         </text>
       </g>
@@ -146,7 +145,7 @@ function AnalyzeCSV() {
                   {
                     dataForQuestion.length < 35 ? (
                       <div className="collapse-content bg-white">
-                      <div className="p-0 lg:p-10">
+                      <div className="p-0 lg:p-10 w-full lg:w-3/4 mx-auto">
                         <ResponsiveContainer width="100%" height={300}>
                           <BarChart data={dataForQuestion} layout="vertical">
                             <CartesianGrid strokeDasharray="3 3" />
@@ -154,6 +153,7 @@ function AnalyzeCSV() {
                             <YAxis
                               type="category"
                               dataKey="name"
+                              //width={100}
                               tick={<CustomYAxisTick />}
                             />
                             <Tooltip />
@@ -165,11 +165,7 @@ function AnalyzeCSV() {
                     ):
                     /* Add NLP here */
                     <div className="collapse-content bg-white">
-                    <p>Enter here</p>{
-                      dataForQuestion.forEach(item =>{
-                        console.log(item.value);
-                      })
-                    }
+                    <p>Enter here</p>
                   </div>
                   }
                 </div>

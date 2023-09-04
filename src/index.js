@@ -4,7 +4,7 @@ import styles from './index.css';
 import App from './App';
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import Navbar from './Components/Navbar';
-import example from './example';
+import AnalyzeSurvey from './AnalyzeSurvey';
 import AnalyzeCSV from './AnalyzeCSV';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -15,6 +15,7 @@ root.render(
         <Route path='/' element = {<Navbar/>}>
           <Route index element={<App/>}/>
           <Route path = '/analyzecsv' element={<AnalyzeCSV/>}/>
+          <Route path = '/analyzesurvey' element = {<AnalyzeSurvey/>}/>
         </Route>
         <Route path='/example' element = {<example/>}></Route>
       </Routes>
