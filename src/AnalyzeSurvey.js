@@ -1,9 +1,135 @@
-import React from 'react'
+import axios from "axios";
+import { React, useState, useEffect, useRef } from "react";
 
 function AnalyzeSurvey() {
+  const [surveys, setSurveys] = useState();
+  const [selectedSurvey, setSelectedSurvey] = useState(null);
+  const [questions, setQuestions] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const questionsPerPage = 7;
+  const detailsRef = useRef(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/survey");
+        setSurveys(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleSurveyClick = async (surveyId) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8000/questionnaires/${surveyId}`
+      );
+      console.log(response.data);
+      setQuestions(response.data);
+      setCurrentPage(1); // Reset to the first page when a new survey is selected
+      const selected = surveys.find((survey) => survey.id === surveyId);
+      setSelectedSurvey(selected);
+      // Close dropdown after clicking
+      if (detailsRef.current) {
+        detailsRef.current.open = false;
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // Calculate the index range for questions on the current page
+  const indexOfLastQuestion = currentPage * questionsPerPage;
+  const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
+  const currentQuestions = questions.slice(
+    indexOfFirstQuestion,
+    indexOfLastQuestion
+  );
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
-    <div>AnalyzeSurvey</div>
-  )
+    <>
+      {/* Start of dropdown */}
+      <details ref={detailsRef} className="dropdown">
+        <summary className="btn bg-blue-700 text-white hover:bg-white hover:text-black rounded-full border-none">
+          {selectedSurvey ? selectedSurvey.title : "Select Survey"}
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+              />
+            </svg>
+          </span>
+        </summary>
+        {/* End of dropdown */}
+        <ul className="p-2 shadow menu dropdown-content rounded-box w-fit bg-base-100 z-10">
+          {surveys &&
+            surveys.map((survey) => (
+              <li key={survey.id}>
+                <button
+                  className="py-2 px-2"
+                  onClick={() => handleSurveyClick(survey.id)}
+                >
+                  {survey.title}
+                </button>
+              </li>
+            ))}
+        </ul>
+      </details>
+      <div className="divider"/>
+      {currentQuestions.length > 0 &&
+        currentQuestions.map((question, index) => {
+          return (
+            <div
+              key={index}
+              tabIndex={0}
+              className="collapse collapse-arrow bg-blue-300 shadow-sm mx-0 mt-3"
+            >
+              <div className="collapse-title text-sm flex items-center">
+                {index + 1 + indexOfFirstQuestion}. {question.question}
+              </div>
+              {/* Enter content here */}
+              <div className="collapse-content bg-white">
+                {
+                  question.type === "openEnded"?
+                  "NLP Material":
+                  "Categoty Material"
+                }
+              </div>
+            </div>
+          );
+        })}
+
+      {/* Pagination */}
+      {questions.length > questionsPerPage && (
+        <ul className="pagination flex mx-auto py-5 gap-3">
+          {Array.from({ length: Math.ceil(questions.length / questionsPerPage) }).map((_, pageNumber) => (
+            <li key={pageNumber}>
+              <button
+                className={`btn ${currentPage === pageNumber + 1 ? 'bg-blue-700 text-white' : ''}`}
+                onClick={() => paginate(pageNumber + 1)}
+              >
+                {pageNumber + 1}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
+  );
 }
 
-export default AnalyzeSurvey
+export default AnalyzeSurvey;
+ 

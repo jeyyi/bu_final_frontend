@@ -1,25 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import Logo from "../Assets/logo2.png";
-import axios from "axios";
 const Navbar = () => {
   const location = useLocation();
   // Check if the current path is '/analyzecsv'
   const isAnalyzeCsv = location.pathname === "/analyzecsv";
   const isAnalyzeSurvey = location.pathname === "/analyzesurvey";
-  const [surveys, setSurveys] = useState();
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:8000/survey");
-        console.log(response.data);
-        setSurveys(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, []);
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -70,41 +56,7 @@ const Navbar = () => {
         <div className="w-full min-h-screen flex flex-col">
           {/* Start navbar for content */}
           <div className="navbar px-32 pt-8 hidden lg:block">
-            <div className="navbar-start">
-              {/* Start of dropdown */}
-              <details className="dropdown">
-                <summary className="btn bg-blue-700 text-white hover:bg-white hover:text-black rounded-full border-none">
-                  Select Survey
-                  <span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="1.5"
-                      stroke="currentColor"
-                      className="w-6 h-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                      />
-                    </svg>
-                  </span>
-                </summary>
-                {/* End of dropdown */}
-                <ul className="p-2 shadow menu dropdown-content rounded-box w-fit bg-base-100">
-                  {
-                    surveys &&
-                      surveys.map((survey)=>(
-                        <li key ={survey.id}>
-                          <a href='/'>{survey.title}</a>
-                        </li>
-                      ))
-                  }
-                </ul>
-              </details>
-            </div>
+            <div className="navbar-start"></div>
             {/* End of navbar top */}
             <div className="navbar-end gap-5">
               <input
