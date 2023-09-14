@@ -1,6 +1,7 @@
 import axios from "axios";
 import { React, useState, useEffect, useRef } from "react";
 import HorizontalBar from "./Components/HorizontalBar";
+import Thematic from "./Components/Thematic";
 
 function AnalyzeSurvey() {
   const [surveys, setSurveys] = useState();
@@ -89,7 +90,7 @@ function AnalyzeSurvey() {
             ))}
         </ul>
       </details>
-      <div className="divider"/>
+      <div className="divider" />
       {currentQuestions.length > 0 &&
         currentQuestions.map((question, index) => {
           return (
@@ -103,11 +104,15 @@ function AnalyzeSurvey() {
               </div>
               {/* Enter content here */}
               <div className="collapse-content bg-white">
-                {
-                  question.type === "openEnded"?
-                  "NLP Material":
+                {question.type === "openEnded" ? (
+                  <div className="flex w-full">
+                    <div className="w-1/2 h-fit">
+                      <Thematic questionId={question.id} />
+                    </div>
+                  </div>
+                ) : (
                   <HorizontalBar questionId={question.id}></HorizontalBar>
-                }
+                )}
               </div>
             </div>
           );
@@ -116,10 +121,14 @@ function AnalyzeSurvey() {
       {/* Pagination */}
       {questions.length > questionsPerPage && (
         <ul className="pagination flex mx-auto py-5 gap-3">
-          {Array.from({ length: Math.ceil(questions.length / questionsPerPage) }).map((_, pageNumber) => (
+          {Array.from({
+            length: Math.ceil(questions.length / questionsPerPage),
+          }).map((_, pageNumber) => (
             <li key={pageNumber}>
               <button
-                className={`btn ${currentPage === pageNumber + 1 ? 'bg-blue-700 text-white' : ''}`}
+                className={`btn ${
+                  currentPage === pageNumber + 1 ? "bg-blue-700 text-white" : ""
+                }`}
                 onClick={() => paginate(pageNumber + 1)}
               >
                 {pageNumber + 1}
@@ -133,4 +142,3 @@ function AnalyzeSurvey() {
 }
 
 export default AnalyzeSurvey;
- 
