@@ -2,6 +2,7 @@ import axios from "axios";
 import { React, useState, useEffect, useRef } from "react";
 import HorizontalBar from "./Components/HorizontalBar";
 import Thematic from "./Components/Thematic";
+import WordCloud from "./Components/WordCloud";
 
 function AnalyzeSurvey() {
   const [surveys, setSurveys] = useState();
@@ -108,6 +109,9 @@ function AnalyzeSurvey() {
                   <div className="flex w-full">
                     <div className="w-1/2 h-fit">
                       <Thematic questionId={question.id} />
+                    </div>
+                    <div className="w-1/2 h-fit">
+                      <WordCloud questionId={question.id} />
                     </div>
                   </div>
                 ) : (

@@ -24,7 +24,6 @@ function Thematic({ questionId }) {
             "http://localhost:8000/get_topics",
             { texts: data }
           );
-          console.log(response.data);
           setTableData(response.data);
         }
       } catch (error) {
