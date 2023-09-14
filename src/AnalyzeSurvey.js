@@ -1,5 +1,6 @@
 import axios from "axios";
 import { React, useState, useEffect, useRef } from "react";
+import HorizontalBar from "./Components/HorizontalBar";
 
 function AnalyzeSurvey() {
   const [surveys, setSurveys] = useState();
@@ -26,7 +27,7 @@ function AnalyzeSurvey() {
       const response = await axios.get(
         `http://localhost:8000/questionnaires/${surveyId}`
       );
-      console.log(response.data);
+
       setQuestions(response.data);
       setCurrentPage(1); // Reset to the first page when a new survey is selected
       const selected = surveys.find((survey) => survey.id === surveyId);
@@ -105,7 +106,7 @@ function AnalyzeSurvey() {
                 {
                   question.type === "openEnded"?
                   "NLP Material":
-                  "Categoty Material"
+                  <HorizontalBar questionId={question.id}></HorizontalBar>
                 }
               </div>
             </div>
