@@ -47,7 +47,7 @@ function Thematic({ questionId }) {
             <tbody>
               {tableData.map((topics, index) => {
                 return (
-                  <tr className="hover">
+                  <tr className="hover" key={index}>
                     <th>{index + 1}</th>
                     <td>
                     {topics.map((topicWord, index) => {

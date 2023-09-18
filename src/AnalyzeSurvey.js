@@ -3,6 +3,8 @@ import { React, useState, useEffect, useRef } from "react";
 import HorizontalBar from "./Components/HorizontalBar";
 import Thematic from "./Components/Thematic";
 import WordCloud from "./Components/WordCloud";
+import Bigram from "./Components/Bigram";
+import MostFrequent from "./Components/MostFrequent";
 
 function AnalyzeSurvey() {
   const [surveys, setSurveys] = useState();
@@ -106,12 +108,22 @@ function AnalyzeSurvey() {
               {/* Enter content here */}
               <div className="collapse-content bg-white">
                 {question.type === "openEnded" ? (
-                  <div className="flex w-full">
-                    <div className="w-1/2 h-fit">
-                      <Thematic questionId={question.id} />
+                  <div>
+                    <div className="flex w-full">
+                      <div className="w-1/2 h-fit">
+                        <Thematic questionId={question.id} />
+                      </div>
+                      <div className="w-1/2 h-fit">
+                        <WordCloud questionId={question.id} />
+                      </div>
                     </div>
-                    <div className="w-1/2 h-fit">
-                      <WordCloud questionId={question.id} />
+                    <div className="flex w-full">
+                      <div className="w-1/2 h-fit">
+                        <Bigram questionId={question.id} />
+                      </div>
+                      <div className="w-1/2 h-fit">
+                        <MostFrequent questionId={question.id}/>
+                      </div>
                     </div>
                   </div>
                 ) : (
