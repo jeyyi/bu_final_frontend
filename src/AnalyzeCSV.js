@@ -29,7 +29,6 @@ function AnalyzeCSV() {
       </g>
     );
   };
-
   const CustomYAxisTick = ({ x, y, payload }) => {
     return (
       <g transform={`translate(${x},${y})`}>
