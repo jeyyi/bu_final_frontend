@@ -6,6 +6,7 @@ import WordCloud from "./Components/WordCloud";
 import Bigram from "./Components/Bigram";
 import MostFrequent from "./Components/MostFrequent";
 import StopWordUploader from "./Components/StopWordUploader";
+import SentimentAnalysis from "./Components/SentimentAnalysis";
 
 function AnalyzeSurvey() {
   const [surveys, setSurveys] = useState();
@@ -128,6 +129,9 @@ function AnalyzeSurvey() {
                       <div className="w-1/2 h-fit">
                         <MostFrequent questionId={question.id} />
                       </div>
+                    </div>
+                    <div className="flex w-full mx-auto">
+                      <SentimentAnalysis questionId={question.id} />
                     </div>
                   </div>
                 ) : (

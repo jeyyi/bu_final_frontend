@@ -10,7 +10,38 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-function MostFrequent({ questionId }) {
+const SentimentAnalysis = ({ questionId }) => {
+  const [sentimentNum, setSentimentNum] = useState();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8000/responses/${questionId}`
+        );
+        const data = response.data;
+
+        if (data) {
+          const sentimentResponse = await axios.post(
+            "http://localhost:8000/get_sentiment",
+            { texts: data }
+          );
+          //transform sentiment data
+          const transformedData = Object.keys(sentimentResponse.data).map(
+            (key) => ({
+              value: key,
+              count: sentimentResponse.data[key],
+            })
+          );
+          //console.log(transformedData);
+          setSentimentNum(transformedData);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, [questionId]);
+
   const CustomXAxisTick = ({ x, y, payload }) => {
     return (
       <g transform={`translate(${x},${y})`}>
@@ -30,63 +61,26 @@ function MostFrequent({ questionId }) {
       </g>
     );
   };
-  const [data, setData] = useState([]);
-  const [tableData, setTableData] = useState();
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:8000/responses/${questionId}`
-        );
-        setData(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, [questionId]);
-  useEffect(() => {
-    const generateTableData = async () => {
-      try {
-        if (data) {
-          const response = await axios.post(
-            "http://localhost:8000/get_frequent",
-            { texts: data }
-          );
-          const dataArray = Object.entries(response.data).map(
-            ([name, value]) => ({
-              name,
-              value,
-            })
-          );
-          console.log(dataArray)
-          setTableData(dataArray);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    generateTableData();
-  }, [data]);
+
   return (
     <>
-      {tableData ? (
+      {sentimentNum ? (
         <div className="flex flex-col justify-center items-center h-full w-full">
           <h3 className="text-lg font-semibold text-center pb-16">
-            Most Frequent Words
+            Sentiment Analysis
           </h3>
           <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={tableData} layout="vertical">
+            <BarChart data={sentimentNum} layout="vertical">
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis type="number" tick={CustomXAxisTick} />
               <YAxis
                 type="category"
-                dataKey="name"
+                dataKey="value"
                 tick={CustomYAxisTick}
                 //width={100}
               />
               <Tooltip />
-              <Bar dataKey="value" fill="#1498FF" />
+              <Bar dataKey="count" fill="#1498FF" />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -97,6 +91,6 @@ function MostFrequent({ questionId }) {
       )}
     </>
   );
-}
+};
 
-export default MostFrequent;
+export default SentimentAnalysis;
