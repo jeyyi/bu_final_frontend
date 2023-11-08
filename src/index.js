@@ -6,6 +6,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom"
 import Navbar from './Components/Navbar';
 import AnalyzeSurvey from './AnalyzeSurvey';
 import AnalyzeCSV from './AnalyzeCSV';
+import SpeechToText from './SpeechToText';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,6 +16,7 @@ root.render(
         <Route path='/' element = {<Navbar/>}>
           <Route index element={<App/>}/>
           <Route path = '/analyzecsv' element={<AnalyzeCSV/>}/>
+          <Route path = '/speechtotext' element={<SpeechToText/>}/>
           <Route path = '/analyzesurvey' element = {<AnalyzeSurvey/>}/>
         </Route>
         <Route path='/example' element = {<example/>}></Route>
