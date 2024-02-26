@@ -59,7 +59,6 @@ function MostFrequent({ questionId }) {
               value,
             })
           );
-          console.log(dataArray)
           setTableData(dataArray);
         }
       } catch (error) {

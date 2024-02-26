@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
 function SpeechToText() {
   const [permission, setPermission] = useState(false);
   const mediaRecorder = useRef(null);
@@ -45,6 +45,7 @@ function SpeechToText() {
 
   const startRecording = async () => {
     setRecordingStatus("recording");
+    setAudioText(null);
     //create new Media recorder instance using the stream
     const media = new MediaRecorder(stream, { type: "audio/webm" });
     //set the MediaRecorder instance to the mediaRecorder ref
@@ -60,34 +61,34 @@ function SpeechToText() {
     setAudioChunks(localAudioChunks);
   };
 
-  const uploadAudio = async () =>{
+  const uploadAudio = async () => {
     const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
-    const audioFile = new File([audioBlob], 'recording.webm', {
-        type: 'audio/webm'
+    const audioFile = new File([audioBlob], "recording.webm", {
+      type: "audio/webm",
     });
 
     const formData = new FormData();
-    formData.append('uploaded_file', audioFile);
+    formData.append("uploaded_file", audioFile);
 
-    try{
-        const response = axios.post('http://localhost:8000/speechtotext',
-            formData,
-            {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            }
-        );
-        setAudioText((await response).data['text'])
+    try {
+      const response = axios.post(
+        "http://localhost:8000/speechtotext",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      setAudioText((await response).data["text"]);
+    } catch (error) {
+      console.error(error);
     }
-    catch(error){
-        console.error(error);
-    }
-  }
+  };
 
   const stopRecording = () => {
     setRecordingStatus("inactive");
-    
+
     mediaRecorder.current.stop();
     mediaRecorder.current.onstop = () => {
       console.log("stopping record");
@@ -152,10 +153,19 @@ function SpeechToText() {
         )}
 
         {audio ? (
-          <div className="audio-container mt-5">
-            <audio src={audio} controls></audio>
-            {audioText}
-          </div>
+          <>
+            <div className="audio-container mt-5">
+              <audio src={audio} controls></audio>
+            </div>
+            <div className="mt-2 text-center">
+              <h2 className="text-lg font-semibold">Transcribed Text</h2>
+              {audioText != null ? (
+                <p className="font-light text-black">{audioText}</p>
+              ) : (
+                <span className="loading loading-dots loading-sm"></span>
+              )}
+            </div>
+          </>
         ) : null}
       </div>
     </>

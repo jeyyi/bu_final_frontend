@@ -22,7 +22,7 @@ function WordCloud({ questionId }) {
       try {
         if (data) {
           const response = await axios.post(
-            "http://localhost:8000/generate_wordcloud/",
+            "http://localhost:8000/generate_wordcloud",
             { texts: data },
             { responseType: "blob" }
           );

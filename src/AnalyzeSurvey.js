@@ -7,6 +7,7 @@ import Bigram from "./Components/Bigram";
 import MostFrequent from "./Components/MostFrequent";
 import StopWordUploader from "./Components/StopWordUploader";
 import SentimentAnalysis from "./Components/SentimentAnalysis";
+import EmotionGraph from "./Components/EmotionGraph";
 
 function AnalyzeSurvey() {
   const [surveys, setSurveys] = useState();
@@ -131,7 +132,12 @@ function AnalyzeSurvey() {
                       </div>
                     </div>
                     <div className="flex w-full mx-auto">
-                      <SentimentAnalysis questionId={question.id} />
+                      <div className="w-1/2 h-fit">
+                        <SentimentAnalysis questionId={question.id} />
+                      </div>
+                      <div className="w-1/2 h-fit flex items-center justify-center">
+                        <EmotionGraph questionId={question.id} />
+                      </div>
                     </div>
                   </div>
                 ) : (
